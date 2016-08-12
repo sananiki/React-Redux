@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import todoApp from './container/reducers'
-//import { DatePicker, message } from 'antd';
-//import DatePicker from 'antd/lib/date-picker';
 import App from './container/App'
 import 'antd/dist/antd.css'; 
 

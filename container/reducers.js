@@ -1,9 +1,11 @@
-import { combineReducers } from 'redux'; //合并两个reducers
+import { combineReducers } from 'redux' //合并两个reducers
 import { ADD_TODO, TOGGLE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters } from './actions';
-
-function todo(state = [], action) {
+const { SHOW_ALL } = VisibilityFilters
+function todos(state = [], action) {
     switch (action.type) {
         case ADD_TODO:
+            console.log(state)
+            console.log("执行增加操作")
             return [
                 ...state,
                 {
@@ -11,6 +13,7 @@ function todo(state = [], action) {
                     isDone: false
                 }
             ]   //添加功能
+            
         case TOGGLE_TODO://标记完成的功能
             /* 写法一：
              return [
@@ -36,8 +39,9 @@ function todo(state = [], action) {
 }
 
 function visibilityFilter(state = SHOW_ALL, action) {
-    switch (action.type) {
+    switch (action.type) {      
         case SET_VISIBILITY_FILTER:
+        //console.log("过滤："+SET_VISIBILITY_FILTER)
             return action.filter
         default:
             return state
@@ -47,7 +51,7 @@ function visibilityFilter(state = SHOW_ALL, action) {
 
 const todoApp = combineReducers({
     visibilityFilter,
-    todo
+    todos
 })
 
 export default todoApp
