@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "test fuck",
   "main": "index.js",
-  "scripts": { 
+  "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --progress --hot --colors --inline",
     "build": "webpack --progress --colors"
@@ -22,6 +22,8 @@
     "css-loader": "^0.23.1",
     "react": "^15.3.0",
     "react-dom": "^15.3.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.5.2",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
