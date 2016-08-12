@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react'
 import AddTodo from '../components/Addtodo'
 import TodoList from '../components/Todolist'
 import Footer from '../components/Footer'
+import { connect } from 'react-redux'
+import { addTodo, completeTodo, setVisibilityFilter, VisibilityFilters } from '../actions'
 //var datas = [
 //{text: "This is one comment",atuh:"sananiki"},
 //{text: "This is *another* comment",atuh:"gods"}
@@ -73,7 +75,7 @@ render() {
     var todoItem = state.filter(check)  //用箭头函数好像有问题？用函数就没问题
   }
   return (
-    <div>
+    <div style={{ width: 400, margin: '100px auto' }}>
       <AddTodo onAdd={this.handleChange} todo={this.state.node}/>
       <TodoList
         todos={todoItem} changeTodoState={this.changeTodoState.bind(this) }/>
@@ -82,6 +84,15 @@ render() {
   )
 }
 }
-// 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
+// state
+function select(state) {
+  return {
+    visibleTodos: selectTodos(state.todos, state.visibilityFilter),
+    visibilityFilter: state.visibilityFilter
+  }
+}
+
+// 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中； select 是
+export default connect(select)(App)
 
 

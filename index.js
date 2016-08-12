@@ -1,8 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import todoApp from './container/reducers'
 //import { DatePicker, message } from 'antd';
 //import DatePicker from 'antd/lib/date-picker';
 import App from './container/App'
 import 'antd/dist/antd.css'; 
 
-ReactDOM.render(<div style={{ width: 400, margin: '100px auto' }}><App /></div>, document.getElementById('root'));
+let store = createStore(todoApp);
+let rootElement = document.getElementById('root');
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    rootElement
+)
